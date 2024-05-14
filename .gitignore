@@ -14,7 +14,6 @@
 #
 
 # Ignore all files by default, but scan all directories
-*
 !*/
 
 # C/C++ source files
@@ -294,5 +293,3 @@ Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/**
 
 # Ignore vulkan registry
 /Engine/Source/ThirdParty/Vulkan/share/vulkan/registry/**
-
-!/Engine\Binaries\DotNET\GitDependencies
