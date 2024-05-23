@@ -14,7 +14,7 @@ setlocal
 pushd %~dp0
 
 @rem Sync the dependencies...
-.\Engine\Binaries\DotNET\GitDependencies\win-x64\GitDependencies.exe %*
+..\Engine\Binaries\DotNET\GitDependencies\win-x64\GitDependencies.exe %*
 if ERRORLEVEL 1 goto error
 
 @rem Setup the git hooks...
