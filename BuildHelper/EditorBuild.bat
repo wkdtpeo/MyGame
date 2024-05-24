@@ -11,10 +11,11 @@ echo Run %~nx0
 echo Current Directory: %CD%
 
 echo.
-echo =========================================
-echo Unreal Engine Setup...
-echo =========================================
+echo >> Unreal Engine Setup...
 call ..\Setup.bat
+if %ERRORLEVEL% NEQ 0 goto FAILED
+
+call ..\GenerateProjectFiles.bat
 if %ERRORLEVEL% NEQ 0 goto FAILED
 
 @rem Done!
