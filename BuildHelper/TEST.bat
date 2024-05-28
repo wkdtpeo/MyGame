@@ -10,7 +10,7 @@ echo Current Directory: %CD%
 echo =========================================
 echo.
 
-call ProjectConfig.bat
+call GetProjectConfig.bat
 if %ERRORLEVEL% NEQ 0 goto FAILED
 
 echo %PROJECT_NAME%

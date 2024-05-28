@@ -20,7 +20,7 @@ call ..\GenerateProjectFiles.bat
 if %ERRORLEVEL% NEQ 0 goto FAILED
 echo [End GenerateProjectFiles.bat]
 
-call ProjectConfig.bat
+call GetProjectConfig.bat
 if %ERRORLEVEL% NEQ 0 goto FAILED
 
 set UPROJECT_NAME=%PROJECT_NAME%.uproject
