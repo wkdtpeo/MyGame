@@ -5,29 +5,43 @@ pushd "%~dp0"
 
 echo.
 echo =========================================
-echo Run EditorBuild.bat
-echo =========================================
 echo Run %~nx0
 echo Current Directory: %CD%
-
+echo =========================================
 echo.
-echo >> Unreal Engine Setup...
+call ProjectConfig.bat
+if %ERRORLEVEL% NEQ 0 goto FAILED
+
 call ..\Setup.bat
 if %ERRORLEVEL% NEQ 0 goto FAILED
 
 call ..\GenerateProjectFiles.bat
 if %ERRORLEVEL% NEQ 0 goto FAILED
 
-@rem Done!
+
+set UPROJECT_NAME=%PROJECT_NAME%.uproject
+set PROJECT_EDITOR=%PROJECT_NAME%Editor
+
+echo.
+echo [Build GameModule...]
+set BUILD_ARGS=Win64 -project="%CLIENT_DIR%\%UPROJECT_NAME%" -progress -NoHotReloadFromIDE -deploy -waitmutex -2022
+
+%UBT_EXE_PATH% %PROJECT_EDITOR% Development %BUILD_ARGS%
+if %ERRORLEVEL% NEQ 0 goto FAILED
+
+@rem Done!!!
 goto DONE
 
 :FAILED
-echo -------- EditorBuild.bat Failed!! -------- 
+echo [31m -------- EditorBuild.bat Failed!! -------- [0m
 echo ERRORLEVEL is %ERRORLEVEL%
-goto DONE
+goto END
 
 :DONE
-echo -------- EditorBuild.bat Done! -------- 
+echo [32m-------- EditorBuild.bat Done! -------- [0m
+goto END
+
+:END
 popd
 endlocal
 echo.
