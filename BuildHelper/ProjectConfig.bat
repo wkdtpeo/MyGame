@@ -32,24 +32,20 @@ echo #CLIENT_DIR : %CLIENT_DIR%
 popd
 
 @rem UnrealBuildTool.exe 경로
-set UBT_PATH=..\Engine\Binaries\DotNET\UnrealBuildTool\
+set UBT_DIR=%ENGINE_DIR%\Binaries\DotNET\UnrealBuildTool\
 set UBT_EXE=UnrealBuildTool.exe
-set UBT_EXE_PATH=%UBT_PATH%%UBT_EXE%
+set UBT_EXE_PATH=%UBT_DIR%%UBT_EXE%
 if not exist %UBT_EXE_PATH% ( 
 echo UBT_EXE ERROR!! : %UBT_EXE_PATH%
 goto FAILED
 )
 
-pushd %UBT_PATH%
-set UBT_EXE_PATH=%cd%\%UBT_EXE%
-echo #UBT_PATH : %UBT_EXE_PATH%
-popd
-
+@rem END!!
 goto END
 
 :FAILED
 echo.
-echo [31m ########### %~nx0 Run Error!! ############# [0m
+echo ########### %~nx0 Run Error!! #############
 echo.
 
 set ERRORLEVEL=1

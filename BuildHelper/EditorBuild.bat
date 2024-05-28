@@ -9,15 +9,19 @@ echo Run %~nx0
 echo Current Directory: %CD%
 echo =========================================
 echo.
-call ProjectConfig.bat
-if %ERRORLEVEL% NEQ 0 goto FAILED
 
+echo [Run Setup.bat]
 call ..\Setup.bat
 if %ERRORLEVEL% NEQ 0 goto FAILED
+echo [End Setup.bat]
 
+echo [Run GenerateProjectFiles.bat]
 call ..\GenerateProjectFiles.bat
 if %ERRORLEVEL% NEQ 0 goto FAILED
+echo [End GenerateProjectFiles.bat]
 
+call ProjectConfig.bat
+if %ERRORLEVEL% NEQ 0 goto FAILED
 
 set UPROJECT_NAME=%PROJECT_NAME%.uproject
 set PROJECT_EDITOR=%PROJECT_NAME%Editor
@@ -33,15 +37,16 @@ if %ERRORLEVEL% NEQ 0 goto FAILED
 goto DONE
 
 :FAILED
-echo [31m -------- EditorBuild.bat Failed!! -------- [0m
+echo -------- EditorBuild.bat Failed!! --------
 echo ERRORLEVEL is %ERRORLEVEL%
 goto END
 
 :DONE
-echo [32m-------- EditorBuild.bat Done! -------- [0m
+echo -------- EditorBuild.bat Done! --------
 goto END
 
 :END
+echo [End EditorBuild.bat]
 popd
 endlocal
 echo.
