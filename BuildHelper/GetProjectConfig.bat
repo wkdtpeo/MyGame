@@ -48,7 +48,6 @@ echo.
 echo ########### %~nx0 Run Error!! #############
 echo.
 
-set ERRORLEVEL=1
 goto END
 
 :END

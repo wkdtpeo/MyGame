@@ -28,7 +28,10 @@ set PROJECT_EDITOR=%PROJECT_NAME%Editor
 
 echo.
 echo [Build GameModule...]
-set BUILD_ARGS=Win64 -project="%CLIENT_DIR%\%UPROJECT_NAME%" -progress -NoHotReloadFromIDE -deploy -waitmutex -2022
+set BUILD_ARGS=Win64 -project="%CLIENT_DIR%\%UPROJECT_NAME%" -progress -NoHotReloadFromIDE -deploy -waitmutex -NoXge -NoUBTMakefiles -2022
+@rem -NoXge : 분산 빌드 프로세스 비활성화
+@rem -NoUBTMakefiles : 타겟 데이터를 캐싱하여 매우 빠른 반복 빌드 지원여부 (자세한 내용은 Engine\Source\Programs\UnrealBuildTool\Configuration.cs 에 검색하여 참고)
+@rem -NoHotReloadFromIDE : True if hot-reload from IDE is allowed
 
 %UBT_EXE_PATH% %PROJECT_EDITOR% Development %BUILD_ARGS%
 if %ERRORLEVEL% NEQ 0 goto FAILED
