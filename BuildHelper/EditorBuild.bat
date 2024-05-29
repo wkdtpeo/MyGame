@@ -27,6 +27,15 @@ set UPROJECT_NAME=%PROJECT_NAME%.uproject
 set PROJECT_EDITOR=%PROJECT_NAME%Editor
 
 echo.
+echo [Build Essential EngineModules...]
+set BUILD_BAT=%ENGINE_DIR%\Build\BatchFiles\Build.bat
+
+@REM ShaderCompileWorker
+set ESSENTIAL_BUILD_ARGS=Win64 Development -waitmutex -NoXge -2022
+call %BUILD_BAT% ShaderCompileWorker %ESSENTIAL_BUILD_ARGS%
+if %ERRORLEVEL% NEQ 0 goto FAILED
+
+echo.
 echo [Build GameModule...]
 set BUILD_ARGS=Win64 -project="%CLIENT_DIR%\%UPROJECT_NAME%" -progress -NoHotReloadFromIDE -deploy -waitmutex -NoXge -NoUBTMakefiles -2022
 @rem -NoXge : 분산 빌드 프로세스 비활성화
