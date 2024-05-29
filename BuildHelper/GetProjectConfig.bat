@@ -47,8 +47,7 @@ goto END
 echo.
 echo ########### %~nx0 Run Error!! #############
 echo.
-
-goto END
+exit /b 1
 
 :END
 echo [End %~nx0]

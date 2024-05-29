@@ -13,10 +13,6 @@ echo.
 call GetProjectConfig.bat
 if %ERRORLEVEL% NEQ 0 goto FAILED
 
-echo %PROJECT_NAME%
-echo %CLIENT_DIR%
-echo %UBT_EXE_PATH%
-
 @rem Done!
 goto DONE
 
