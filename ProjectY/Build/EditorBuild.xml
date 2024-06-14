@@ -12,5 +12,5 @@
 			<Log Message="The following files are part of ProjectY:" Files="#ProjectYEditor"/>
 		</Node>		
 	</Agent>	
-	<Aggregate Name="Building ProjectY Editor" Requires="Compile ProjectY Editor"/>
+	<Aggregate Name="Building ProjectYEditor" Requires="Compile ProjectYEditor"/>
 </BuildGraph>
