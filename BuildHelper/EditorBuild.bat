@@ -10,12 +10,10 @@ echo Current Directory: %CD%
 echo =========================================
 echo.
 
-if "%RUN_SETUP_BAT%"=="true" (
-echo [Run Setup.bat]
-call ..\Setup.bat
+echo [Run SyncDependencies.bat]
+call SyncDependencies.bat
 if %ERRORLEVEL% NEQ 0 goto FAILED
-echo [End Setup.bat]
-)
+echo [End SyncDependencies.bat]
 
 echo [Run GenerateProjectFiles.bat]
 call ..\GenerateProjectFiles.bat
