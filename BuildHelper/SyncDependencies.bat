@@ -11,6 +11,18 @@ for %%P in (%*) do if /I "%%P" == "--force" goto no_prompt_argument
 set PROMPT_ARGUMENT=--prompt
 :no_prompt_argument
 
+@rem UE5 엔진 절대경로
+set ENGINE_DIR=..\Engine
+if not exist %ENGINE_DIR% ( 
+    echo ENGINE_DIR ERROR! 
+    goto FAILED
+) 
+
+pushd %ENGINE_DIR%
+set ENGINE_DIR=%cd%
+echo #ENGINE_DIR : %ENGINE_DIR%
+popd
+
 rem Sync the dependencies...
 %ENGINE_DIR%\Binaries\DotNET\GitDependencies\win-x64\GitDependencies.exe %PROMPT_ARGUMENT% %*
 if %ERRORLEVEL% NEQ 0 goto error
