@@ -15,7 +15,7 @@ set PROMPT_ARGUMENT=--prompt
 set ENGINE_DIR=..\Engine
 if not exist %ENGINE_DIR% ( 
     echo ENGINE_DIR ERROR! 
-    goto FAILED
+    goto error
 ) 
 
 pushd %ENGINE_DIR%
