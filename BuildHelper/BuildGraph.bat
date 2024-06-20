@@ -19,7 +19,7 @@ call %RUN_UAT_BAT% BuildGraph -Script=Engine/Build/InstalledEngineBuild.xml -Tar
 if %ERRORLEVEL% NEQ 0 goto FAILED
 
 @REM ProjecY Editor Build
-call %RUN_UAT_BAT% BuildGraph -Script=ProjectY/Build/EditorBuild.xml -Target="ProjectYEditor" %UAT_BAT_ARGS% -set:UProjectPath=%CLIENT_DIR%\%PROJECT_NAME%.uproject
+call %RUN_UAT_BAT% BuildGraph -Script=ProjectY/Build/EditorBuild.xml -Target="ProjectYEditor" -set:UProjectPath=%CLIENT_DIR%\%PROJECT_NAME%.uproject
 if %ERRORLEVEL% NEQ 0 goto FAILED
 
 @rem END!!
