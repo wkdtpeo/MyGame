@@ -7,12 +7,22 @@
 		{
 			"Name": "ProjectY",
 			"Type": "Runtime",
-			"LoadingPhase": "Default"
+			"LoadingPhase": "Default",
+			"AdditionalDependencies": [
+				"UMG"
+			]
 		}
 	],
 	"Plugins": [
 		{
 			"Name": "ModelingToolsEditorMode",
+			"Enabled": true,
+			"TargetAllowList": [
+				"Editor"
+			]
+		},
+		{
+			"Name": "ProjectYUMG",
 			"Enabled": true,
 			"TargetAllowList": [
 				"Editor"
